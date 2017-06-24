@@ -15,7 +15,6 @@ include('includes/header.php');
 
     include('includes/navigation.php');
 
-
     ?>
 
 
@@ -28,13 +27,42 @@ include('includes/header.php');
             <div class="col-md-8">
 
 
-            <?php
+         <?php
 
+            if(isset($_POST['submit']))
+            {
+                $search = $_POST['search'];
+
+                $query = "SELECT * FROM posts WHERE post_tags LIKE 
+                '%$search%' ";
+
+                $search_query = $connection->query($query);
+
+
+                if(!$search_query)
+                {
+                    die("Query Failed" . mysqli_error($connection));
+              
+              	}
+
+                $count = mysqli_num_rows($search_query);
+
+
+                if($count == 0)
+                {
+                    echo "<h1>No Result</h1>";
+                }
+
+               	else
+               	{
+               	 	
+/*
             $query = "SELECT * FROM posts";
 
             $select_all_posts_query = $connection->query($query);
+*/            
 
-            while($row= $select_all_posts_query->fetch_assoc())
+            while($row= $search_query->fetch_assoc())
             {
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
@@ -43,10 +71,6 @@ include('includes/header.php');
                 $post_content = $row['post_content'];
 
             ?>
-
-
-
-
 
                 <h1 class="page-header">
                     Page Heading
@@ -72,10 +96,15 @@ include('includes/header.php');
 
 
 
-           <?php } ?>
+           <?php } 
+
+               	}
+            }
+		?>
+
+     
 
 
-               
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
@@ -93,6 +122,4 @@ include('includes/header.php');
        <?php
 
        include('includes/footer.php');
-
-
-        ?>
+?>
