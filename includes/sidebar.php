@@ -32,7 +32,7 @@
                 <?php
 
 
-                $query = "SELECT * FROM catagories LIMIT 5";
+                $query = "SELECT * FROM catagories /*LIMIT 5*/ ";
 
                 $select_catagories_sidebar_query = $connection->query($query);
 
