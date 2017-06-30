@@ -58,7 +58,7 @@
                     </li>
 
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Catagories</a>
+                        <a href="catagories.php"><i class="fa fa-fw fa-wrench"></i> Catagories</a>
                     </li>
 
                     <li class="active">

@@ -1,3 +1,8 @@
+<?php include('function.php'); ?>
+<?php include ('../includes/db.php') ?>
+<?php ob_start(); ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

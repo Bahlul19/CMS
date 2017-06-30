@@ -1,4 +1,4 @@
-<?php include('includes/header.php') ?>
+<?php include('includes/admin_header.php') ?>
 
 <!-- Header -->
 
@@ -6,10 +6,12 @@
 
     <div id="wrapper">
 
+   <!--  <?php if($connection)  echo 'Connected';  ?> -->
+
 
 <!-- Navigation -->
 
-<?php include('includes/navigation.php') ?>
+<?php include('includes/admin_navigation.php') ?>
 
 
         <div id="page-wrapper">
@@ -37,7 +39,7 @@
     
 
 
-    <?php include('includes/footer.php') ?>
+    <?php include('includes/admin_footer.php') ?>
 
 
 <!--Take out the footer section from the template to the diffrent folder-->
