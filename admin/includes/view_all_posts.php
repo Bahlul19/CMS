@@ -11,6 +11,7 @@
                     <th>Tag</th>
                     <th>Comments</th>
                     <th>Date</th>
+                     <th>Content</th>
                     </tr>
                     </thead>
 
@@ -38,6 +39,7 @@
                   $post_tags = $row['post_tags'];
                   $post_comment_count = $row['post_comment_count'];
                   $post_date = $row['post_date'];
+                  $post_content = $row['post_content'];
 
                   echo "<tr>";
 
@@ -50,6 +52,7 @@
                   echo "<td>{$post_tags}</td>";
                   echo "<td>{$post_comment_count}</td>";
                   echo "<td>{$post_date}</td>";
+                  echo "<td>{$post_content}</td>";
 
                   echo "</tr>";
 

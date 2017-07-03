@@ -41,5 +41,6 @@ $connection = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 // 	echo "Please connect the database";
 // }
 
+// mysqli_close($connection);
 
 ?>
