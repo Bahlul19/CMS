@@ -12,6 +12,7 @@
                     <th>Comments</th>
                     <th>Date</th>
                      <th>Content</th>
+                     <th>Remove</th>
                     </tr>
                     </thead>
 
@@ -54,6 +55,7 @@
                   echo "<td>{$post_date}</td>";
                   echo "<td>{$post_content}</td>";
 
+                  echo "<td><a href='post.php?delete={$post_id}'>Delete</a></td>";
                   echo "</tr>";
 
 
@@ -68,3 +70,17 @@
                     </tbody>
 
                     </table>
+
+<?php 
+
+if(isset($_GET['delete']))
+{
+  $delete = $_GET['delete'];
+
+  $query = "DELETE FROM posts WHERE post_id = {$delete}";
+
+  $delete_posts_query = $connection->query($query);
+  header('Location: post.php');
+}
+
+?>
