@@ -46,7 +46,7 @@
                       break;
 
                       case '100';
-                      echo  "Nice 100";
+                      echo "Nice 100";
                       break;
 
                       case '200';
@@ -61,6 +61,16 @@
                     ?>
 
 
+                    <?php 
+
+                    if(isset($_GET['edit']))
+                    {
+                      $edit = $_GET['edit'];
+                      include('includes/edit_post.php');
+                    }
+
+                    ?>
+                 
 
                     </div>
 

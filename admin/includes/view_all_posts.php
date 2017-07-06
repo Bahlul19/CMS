@@ -56,6 +56,9 @@
                   echo "<td>{$post_content}</td>";
 
                   echo "<td><a href='post.php?delete={$post_id}'>Delete</a></td>";
+
+                  echo "<td><a href='post.php?edit={$post_id}'>Edit</a></td>";
+
                   echo "</tr>";
 
 
