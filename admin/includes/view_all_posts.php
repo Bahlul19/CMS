@@ -13,6 +13,7 @@
                     <th>Date</th>
                      <th>Content</th>
                      <th>Remove</th>
+                     <th>Update</th>
                     </tr>
                     </thead>
 
@@ -81,7 +82,7 @@ if(isset($_GET['delete']))
   $delete = $_GET['delete'];
 
   $query = "DELETE FROM posts WHERE post_id = {$delete}";
-
+ 
   $delete_posts_query = $connection->query($query);
   header('Location: post.php');
 }
