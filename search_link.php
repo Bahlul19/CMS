@@ -15,6 +15,7 @@ include('includes/header.php');
 
     include('includes/navigation.php');
 
+
     ?>
 
 
@@ -27,63 +28,47 @@ include('includes/header.php');
             <div class="col-md-8">
 
 
-         <?php
+            <?php
 
-
-
-            if(isset($_POST['submit']))
+            if(isset($_GET['id']))
             {
-                $search = $_POST['search'];
+                $post_id = $_GET['id'];
+            }
 
-                $query = "SELECT * FROM posts WHERE post_tags LIKE 
-                '%$search%' ";
-
-                $search_query = $connection->query($query);
-
-
-                if(!$search_query)
-                {
-                    die("Query Failed" . mysqli_error($connection));
-              
-              	}
-
-                $count = mysqli_num_rows($search_query);
-
-
-                if($count == 0)
-                {
-                    echo "<h1>No Result</h1>";
-                }
-
-               	else
-               	{
-               	 	
-/*
-            $query = "SELECT * FROM posts";
+            $query = " SELECT * FROM posts WHERE post_id = $post_id";
 
             $select_all_posts_query = $connection->query($query);
-*/            
 
-            while($row= $search_query->fetch_assoc())
+            while($row= $select_all_posts_query->fetch_assoc())
             {
+
                 $post_id = $row['post_id'];
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
                 $post_image = $row['post_image'];
-                $post_content = $row['post_content'];
+                $post_content =substr($row['post_content'],0,100);
+                
+                //substring is use for short the content
 
             ?>
 
+
+
+
+
                 <h1 class="page-header">
                     Page Heading
-                    <small>Secondary Text</small>
+                    <small>Secondary Text </small>
                 </h1>
 
                 <!-- First Blog Post -->
                 <h2>
+
                     <a href="post.php?id= <?= $post_id ?> ">
-                    <?= $post_title ?> </a> 
+                    <?= $post_title ?> </a>
+
+
                 </h2>
                 <p class="lead">
                     by <a href="index.php"><?=  $post_author ?></a>
@@ -91,7 +76,7 @@ include('includes/header.php');
                 <p><span class="glyphicon glyphicon-time"></span>
                 <?= $post_date ?></p>
                 <hr>
-                <img class="img-responsive" src="images/<?=  $post_image ?>" alt="">
+                <img  class="img-responsive" src="images/<?=  $post_image ?>" alt="">
                 <hr>
                 <p> <?= $post_content ?> </p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -100,15 +85,10 @@ include('includes/header.php');
 
 
 
-           <?php } 
-
-               	}
-            }
-		?>
-
-     
+           <?php } ?>
 
 
+               
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
@@ -126,4 +106,6 @@ include('includes/header.php');
        <?php
 
        include('includes/footer.php');
-?>
+
+
+        ?>
