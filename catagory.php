@@ -30,25 +30,28 @@ include('includes/header.php');
 
             <?php
 
-            $query = "SELECT * FROM posts";
+
+            if(isset($_GET['catagory']))
+            {
+              $post_catagory_id = $_GET['catagory'];
+            }
+
+            $query = "SELECT * FROM posts WHERE post_catagory_id =
+            {$post_catagory_id}";
 
             $select_all_posts_query = $connection->query($query);
 
-            while($row= $select_all_posts_query->fetch_assoc())
+            while($row =  $select_all_posts_query->fetch_assoc())
             {
-
                 $post_id = $row['post_id'];
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
                 $post_image = $row['post_image'];
-                $post_content =substr($row['post_content'],0,100);
-                
-                //substring is use for short the content
+                // $post_content = substr($row['post_content'],0,10);
+                $post_content = $row['post_content'];
 
             ?>
-
-
 
 
 

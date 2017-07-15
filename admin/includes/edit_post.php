@@ -4,30 +4,7 @@
 	{
 		$edit = $_GET['edit'];
 	}	
-/*
-		$query = "SELECT * FROM posts WHERE post_id = {$edit}";
 
-		$select_posts_by_id = $connection->query($query);
-
-		$result = $select_posts_by_id->fetch_assoc();
-
-		if(isset($_POST['update_post']))
-		{
-			$post_author = $_POST['post_author'];
-			$post_title = $_POST['post_title'];
-			$post_catagory_id = $_POST['post_catagory_id'];
-			$post_image = $_FILES['post_image']['name'];
-			$post_image_temp = $_FILES['post_image']['tmp_name'];
-			$post_tags = $_POST['post_tags'];
-			$post_content = $_POST['post_content'];
-
-		$query = "UPDATE posts SET post_author = '{$post_author}',post_title = '{$post_title}',post_catagory_id = '{$post_catagory_id}',post_image = '{$post_image}',post_tags = '{$post_tags}',post_content = '{$post_content}',post_date = now() WHERE post_id = {$edit} ";
-
-		$update_query = $connection->query($query);
-
-		}
-		
-	*/
 	
 	$query = "SELECT * FROM posts WHERE post_id = {$edit}";
 
@@ -52,7 +29,7 @@
 	if(isset($_POST['update_post']))
 	{
 		$post_title = $_POST['post_title'];
-		$post_catagory_id = $_POST['post_catagory_id'];
+		$post_catagory_id = $_POST['post_catagory'];
 		$post_author = $_POST['post_author'];
 		$post_status = $_POST['post_status'];
 
@@ -105,7 +82,7 @@
 	<!-- Lets pull up the catagory id value from the database 
 	<input type="text" name="post_catagory_id" class="form-control"  value="<?= $post_catagory_id?>"> -->
 
-	<select name="post_catagory_id" id="">
+	<select name="post_catagory" id="">
 
 		<?php
 
@@ -118,10 +95,11 @@
             {
                     $cat_id = $row['cat_id'];
                     $cat_title = $row['cat_title'];
-                    echo "<option value=''>{$cat_title}</option>";
+                   	echo "<option value='$cat_id'>{$cat_title}</option>";
             }
            
 		?>
+		
 
 	</select>
  

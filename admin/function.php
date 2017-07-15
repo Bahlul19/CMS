@@ -35,7 +35,7 @@ function read_catagories()
 
 	global $connection; 
 
-	$query = "SELECT * FROM catagories /*LIMIT 5*/ ";
+	       $query = "SELECT * FROM catagories /*LIMIT 5*/ ";
 
             $select_catagories_query = $connection->query($query);
 

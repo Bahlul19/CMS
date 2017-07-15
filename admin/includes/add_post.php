@@ -5,7 +5,7 @@
 	if(isset($_POST['create_post']))
 	{
 		$post_title = $_POST['post_title'];
-		$post_catagory_id = $_POST['post_catagory_id'];
+		$post_catagory_id = $_POST['post_catagory'];
 		$post_author = $_POST['post_author'];
 		$post_status = $_POST['post_status'];
 
@@ -20,12 +20,11 @@
 
 		move_uploaded_file($post_image_temp,"../images/$post_image");
 
-		$query = "INSERT INTO posts(post_title,post_catagory_id,post_author,post_status,post_image,post_tags,post_content,post_date,	post_comment_count) VALUES('{$post_title}','{$post_catagory_id}','{$post_author }','{$post_status}','{$post_image}','{$post_tags}','{$post_content}',now(),'{$post_comment_count}') ";
+		$query = "INSERT INTO posts(post_title,post_catagory_id,post_author,post_status,post_image,post_tags,post_content,post_date,	post_comment_count) VALUES ('{$post_title}','{$post_catagory_id}','{$post_author }','{$post_status}','{$post_image}','{$post_tags}','{$post_content}',now(),'{$post_comment_count}') ";
 
 		$insert_post_query = $connection->query($query);
 
 	}
-
 
 ?>
 
@@ -42,12 +41,42 @@
 
 </div>
 
+
+
 <div class="form-group">
 
-	<label for="post_catagory_id">Post Catagory ID</label>
-	<input type="text" name="post_catagory_id" class="form-control">
+	<!-- <label for="post_catagory_id">Post Catagory ID</label> -->
+	
+	<!-- Lets pull up the catagory id value from the database 
+	<input type="text" name="post_catagory_id" class="form-control"  value="<?= $post_catagory_id?>"> -->
 
+	<select name="post_catagory" id="">
+
+		<?php
+
+			$query = "SELECT * FROM catagories";
+
+            $select_catagories_query = $connection->query($query);
+
+
+           while($row = $select_catagories_query->fetch_assoc())
+            {
+                    $cat_id = $row['cat_id'];
+                    $cat_title = $row['cat_title'];
+                   	echo "<option value='$cat_id'>{$cat_title}</option>";
+            }
+           
+		?>
+
+	</select>
+ 
 </div>
+
+
+
+
+
+
 
 <div class="form-group">
 

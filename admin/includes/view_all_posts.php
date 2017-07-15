@@ -48,7 +48,29 @@
                   echo "<td>{$post_id}</td>";
                   echo "<td>{$post_author}</td>";
                   echo "<td>{$post_title}</td>";
-                  echo "<td>{$post_catagory_id}</td>";
+
+
+            
+           /* For pull up the catagories values from the database  */
+
+            
+
+                $query = "SELECT * FROM catagories WHERE cat_id =  $post_catagory_id";
+
+              $edit_catagories_query = $connection->query($query);
+
+
+            while($row = $edit_catagories_query->fetch_assoc())
+            {
+                    // echo '<li>$row["cat_title"]</li>';
+
+                    $cat_id = $row['cat_id'];
+                    $cat_title = $row['cat_title'];
+                    echo "<td>{$cat_title}</td>";
+            }        
+
+
+                  
                   echo "<td>{$post_status}</td>";
                   echo "<td><img width='100' src='../images/{$post_image}' alt='image'></td>";
                   echo "<td>{$post_tags}</td>";
@@ -61,8 +83,6 @@
                   echo "<td><a href='post.php?edit={$post_id}'>Edit</a></td>";
 
                   echo "</tr>";
-
-
 
                 }
 
